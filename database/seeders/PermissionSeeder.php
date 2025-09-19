@@ -28,6 +28,26 @@ class PermissionSeeder extends Seeder
             'user.create',
             'user.edit',
             'user.delete',
+
+            'categoria.view',
+            'categoria.create',
+            'categoria.edit',
+            'categoria.delete',
+
+            'presupuesto.view',
+            'presupuesto.create',
+            'presupuesto.edit',
+            'presupuesto.delete',
+
+            'transaccion.view',
+            'transaccion.create',
+            'transaccion.edit',
+            'transaccion.delete',
+
+            'reporte.view',
+            'reporte.create',
+            'reporte.edit',
+            'reporte.delete',
         ];
 
         // foreach( $permissions as $key => $value ) {

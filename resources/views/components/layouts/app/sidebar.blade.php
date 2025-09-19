@@ -26,7 +26,23 @@
                     @if(auth()->user()->can('product.view') || auth()->user()->can('product.create') || auth()->user()->can('product.edit') || auth()->user()->can('product.delete'))
                         <flux:navlist.item icon="list-bullet" :href="route('products.index')" :current="request()->routeIs('products.index')" wire:navigate>{{ __('Products') }}</flux:navlist.item>
                     @endif
+
+                    @if(auth()->user()->can('categoria.view') || auth()->user()->can('categoria.create') || auth()->user()->can('categoria.edit') || auth()->user()->can('categoria.delete'))
+                        <flux:navlist.item icon="rectangle-stack" :href="route('categorias.index')" :current="request()->routeIs('categorias.index')" wire:navigate>{{ __('categorias') }}</flux:navlist.item>
+                    @endif
+
+                    @if(auth()->user()->can('presupuesto.view') || auth()->user()->can('presupuesto.create') || auth()->user()->can('presupuesto.edit') || auth()->user()->can('presupuesto.delete'))
+                        <flux:navlist.item icon="wallet" :href="route('presupuestos.index')" :current="request()->routeIs('presupuestos.index')" wire:navigate>{{ __('presupuestos') }}</flux:navlist.item>
+                    @endif
+
+                    @if(auth()->user()->can('transaccion.view') || auth()->user()->can('transaccion.create') || auth()->user()->can('transaccion.edit') || auth()->user()->can('transaccion.delete'))
+                        <flux:navlist.item icon="banknotes" :href="route('transacciones.index')" :current="request()->routeIs('transacciones.index')" wire:navigate>{{ __('transacciones') }}</flux:navlist.item>
+                    @endif
                     
+                    @if(auth()->user()->can('reporte.view') || auth()->user()->can('reporte.create') || auth()->user()->can('reporte.edit') || auth()->user()->can('reporte.delete'))
+                        <flux:navlist.item icon="chart-bar" :href="route('reportes.index')" :current="request()->routeIs('reportes.index')" wire:navigate>{{ __('reportes') }}</flux:navlist.item>
+                    @endif
+
                 </flux:navlist.group>
             </flux:navlist>
 

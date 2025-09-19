@@ -1,19 +1,41 @@
 <?php
-
 use Livewire\Volt\Volt;
-use App\Livewire\Roles\RoleEdit;
-use App\Livewire\Roles\RoleShow;
-use App\Livewire\Users\UserEdit;
-use App\Livewire\Users\UserShow;
-use App\Livewire\Roles\RoleIndex;
-use App\Livewire\Users\UserIndex;
-use App\Livewire\Roles\RoleCreate;
-use App\Livewire\Users\UserCreate;
 use Illuminate\Support\Facades\Route;
-use App\Livewire\Products\ProductEdit;
-use App\Livewire\Products\ProductShow;
-use App\Livewire\Products\ProductIndex;
+
+use App\Livewire\Users\UserCreate;
+use App\Livewire\Users\UserEdit;
+use App\Livewire\Users\UserIndex;
+use App\Livewire\Users\UserShow;
+
+use App\Livewire\Roles\RoleCreate;
+use App\Livewire\Roles\RoleEdit;
+use App\Livewire\Roles\RoleIndex;
+use App\Livewire\Roles\RoleShow;
+
 use App\Livewire\Products\ProductCreate;
+use App\Livewire\Products\ProductEdit;
+use App\Livewire\Products\ProductIndex;
+use App\Livewire\Products\ProductShow;
+
+use App\Livewire\Categorias\CategoriaCreate;
+use App\Livewire\Categorias\CategoriaEdit;
+use App\Livewire\Categorias\CategoriaIndex;
+use App\Livewire\Categorias\CategoriaShow;
+
+use App\Livewire\Presupuestos\PresupuestoCreate;
+use App\Livewire\Presupuestos\PresupuestoEdit;
+use App\Livewire\Presupuestos\PresupuestoIndex;
+use App\Livewire\Presupuestos\PresupuestoShow;
+
+use App\Livewire\Transacciones\TransaccionCreate;
+use App\Livewire\Transacciones\TransaccionEdit;
+use App\Livewire\Transacciones\TransaccionIndex;
+use App\Livewire\Transacciones\TransaccionShow;
+
+use App\Livewire\Reportes\ReporteCreate;
+use App\Livewire\Reportes\ReporteEdit;
+use App\Livewire\Reportes\ReporteIndex;
+use App\Livewire\Reportes\ReporteShow;
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,6 +63,26 @@ Route::middleware(['auth'])->group(function () {
     Route::get('roles/{id}/edit', RoleEdit::class)->name('roles.edit')->middleware('permission:role.edit');
     Route::get('roles/{id}', RoleShow::class)->name('roles.show')->middleware('permission:role.view');
     
+    Route::get('categorias', CategoriaIndex::class)->name('categorias.index')->middleware('permission:categoria.view|categoria.create|categoria.edit|categoria.delete');
+    Route::get('categorias/create', CategoriaCreate::class)->name('categorias.create')->middleware('permission:categoria.create');
+    Route::get('categorias/{id}/edit', CategoriaEdit::class)->name('categorias.edit')->middleware('permission:categoria.edit');
+    Route::get('categorias/{id}', CategoriaShow::class)->name('categorias.show')->middleware('permission:categoria.view');
+
+    Route::get('presupuestos', PresupuestoIndex::class)->name('presupuestos.index')->middleware('permission:presupuesto.view|presupuesto.create|presupuesto.edit|presupuesto.delete');
+    Route::get('presupuestos/create', PresupuestoCreate::class)->name('presupuestos.create')->middleware('permission:presupuesto.create');
+    Route::get('presupuestos/{id}/edit', PresupuestoEdit::class)->name('presupuestos.edit')->middleware('permission:presupuesto.edit');
+    Route::get('presupuestos/{id}', PresupuestoShow::class)->name('presupuestos.show')->middleware('permission:presupuesto.view');
+
+    Route::get('transacciones', TransaccionIndex::class)->name('transacciones.index')->middleware('permission:transaccion.view|transaccion.create|transaccion.edit|transaccion.delete');
+    Route::get('transacciones/create', TransaccionCreate::class)->name('transacciones.create')->middleware('permission:transaccion.create');
+    Route::get('transacciones/{id}/edit', TransaccionEdit::class)->name('transacciones.edit')->middleware('permission:transaccion.edit');
+    Route::get('transacciones/{id}', TransaccionShow::class)->name('transacciones.show')->middleware('permission:transaccion.view');
+
+    Route::get('reportes', ReporteIndex::class)->name('reportes.index')->middleware('permission:reporte.view|reporte.create|reporte.edit|reporte.delete');
+    Route::get('reportes/create', ReporteCreate::class)->name('reportes.create')->middleware('permission:reporte.create');
+    Route::get('reportes/{id}/edit', ReporteEdit::class)->name('reportes.edit')->middleware('permission:reporte.edit');
+    Route::get('reportes/{id}', ReporteShow::class)->name('reportes.show')->middleware('permission:reporte.view');
+
     Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
     Volt::route('settings/password', 'settings.password')->name('settings.password');
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
