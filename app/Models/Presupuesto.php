@@ -25,4 +25,10 @@ class Presupuesto extends Model
     {
         return $this->hasMany(Reporte::class, 'id_presupuesto');
     }
+
+    // public function transacciones()
+    // {
+    //     return $this->hasMany(Transaccion::class, 'id_categoria', 'id_categoria')
+    //                 ->whereRaw('MONTH(fecha) = id_mes');
+    // }
 }
